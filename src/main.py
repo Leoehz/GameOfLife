@@ -13,7 +13,7 @@ if __name__ == "__main__" :
     estado = Estado.CORRIENDO
     while estado in (Estado.CORRIENDO, Estado.PAUSA):
         if estado == Estado.CORRIENDO:
-
+            # TODO: Eliminar hardcodeo y dinamizar con game.py
             grid[10][11] = Celula.MUERTA
             grid[10][10] = Celula.VIVA
             estado = renderer.handle_events(estado)
