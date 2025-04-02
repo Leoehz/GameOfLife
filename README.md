@@ -23,7 +23,7 @@ Este proyecto es una implementación del **Juego de la Vida de Conway** utilizan
    ```
 
 ## Uso
-Ejecuta el siguiente comando para iniciar la simulación:
+Ejecuta el siguiente comando para iniciar la simulación dentro de la carpeta src:
 ```bash
 python main.py
 ```
@@ -38,12 +38,13 @@ Cada línea representa una célula viva en la grilla, con su fila y columna corr
 
 ## Estructura del Proyecto
 ```
-📂 juego-de-la-vida/
+📂 GameOfLife/
 ├── 📂 assets/              # Recursos gráficos y sonidos
 ├── 📂 config/              # Archivos de configuración
 │   ├── initial_state.txt   # Configuración inicial de la grilla
 ├── 📂 src/                 # Código fuente
 │   ├── game.py            # Lógica del Juego de la Vida
+│   ├── conf.py            # Configuracion general del juego
 │   ├── renderer.py        # Renderizado con Pygame
 │   ├── main.py            # Punto de entrada del programa
 ├── 📜 README.md           # Documentación del proyecto
