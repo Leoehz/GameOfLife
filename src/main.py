@@ -1,37 +1,31 @@
 from renderer import Renderer
-from conf import GRID_SIZE, TICK_RATE, Estado, Celula, cargarCelulas
+from conf import GRID_SIZE, TICK_RATE, Estado, Celula, Escenario, cargarCelulas
 from game import actualizarCeldas
 import pygame
+import sys
 
 if __name__ == "__main__" :
-    renderer = Renderer()
+
+    initial_config = Escenario.CAOS
 
     # Inicializar grilla vacia
     grid = [[Celula.MUERTA] * GRID_SIZE for _ in range(GRID_SIZE)]
-    grid = cargarCelulas(grid)
+    renderer = Renderer(grid)
+    grid = cargarCelulas(grid, file_name=initial_config)
+    renderer.draw_cells(grid)
 
-    # TODO: Cargar valores desde config/initial_state.txt
+    estado = Estado.PAUSA
 
-    estado = Estado.CORRIENDO
-    while estado in (Estado.CORRIENDO, Estado.PAUSA):
+    while estado != Estado.SALIR:
         if estado == Estado.CORRIENDO:
-            # TODO: Eliminar hardcodeo y dinamizar con game.py
-            #grid[10][11] = Celula.MUERTA
-            #grid[10][10] = Celula.VIVA
             grid = actualizarCeldas(grid)
-            estado = renderer.handle_events(estado)
             renderer.draw_cells(grid)
-            renderer.tick(TICK_RATE)
-
-            #grid[10][10] = Celula.MUERTA
-            #grid[10][11] = Celula.VIVA
-
-            #renderer.draw_cells(grid)
-            #renderer.tick(TICK_RATE)
 
         elif estado == Estado.PAUSA:
-            estado = renderer.handle_events(estado)
-            renderer.draw_cells(grid)
-            renderer.tick(TICK_RATE)
+            # TODO: Agregar logica adicional (siguiente gen por ejemplo)
+            pass
+        estado = renderer.handle_events(estado)
+        renderer.tick(TICK_RATE)
 
     pygame.quit()
+    sys.exit()

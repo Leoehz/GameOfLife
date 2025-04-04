@@ -1,21 +1,15 @@
 from conf import GRID_SIZE, Celula
-import time
 
 def contarVecinos(posX, posY, grid):
 	cant_vecinos = 0
-	#for fila in grid:
-	#	print(" ".join(map(str, fila)))
+	valid_range = range(-1, 2) # [-1, 0, 1]
 
-	#print('\n')
-	for i in range(-1, 2):
-		for j in range(-1, 2):
+	for i in valid_range:
+		for j in valid_range:
 			posXi, posYj = i + posX, j + posY
 			if 0 <= posXi < GRID_SIZE and 0 <= posYj < GRID_SIZE and (i, j) != (0, 0):
-	#			print(posXi, posYj, grid[posXi][posYj])
 				if (grid[posXi][posYj] == Celula.VIVA):
 					cant_vecinos+=1
-	#print("Cant vecinos", cant_vecinos, posX, posY)
-	#time.sleep(1)
 	return cant_vecinos
 
 def muereCelula(cant_vecinos):
