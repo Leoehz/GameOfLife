@@ -48,8 +48,18 @@ class Renderer:
                     return Estado.CORRIENDO
                 elif event.key == pygame.K_q:
                     return Estado.SALIR
-                elif event.key == pygame.K_SPACE:
+                elif event.key == pygame.K_SPACE and estado != Estado.PAUSA:
+                    print('Se presiono Space')
                     return Estado.PAUSA
+                elif event.key == pygame.K_SPACE and estado == Estado.PAUSA:
+                    print('Se presiono Space')
+                    return Estado.CORRIENDO
+                elif event.key == pygame.K_RIGHT and estado == Estado.PAUSA:
+                    print('Se presiono derecha')
+                    return Estado.AVANZA
+                elif event.key == pygame.K_LEFT and estado == Estado.PAUSA:
+                    print('Se presiono izquierda')
+                    return Estado.ATRASA
 
         return estado
 

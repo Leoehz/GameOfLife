@@ -33,4 +33,4 @@ def actualizarCeldas(grid):
 			#elif viveCelula(cant_vecinos) and grid[i][j] == Celula.VIVA:
 			#	grid[i][j] = Celula.VIVA
 
-	return grid
+	return grid, old_grid

@@ -21,6 +21,8 @@ class Estado(Enum):
     CORRIENDO = 1
     PAUSA = 2
     SALIR = 0
+    AVANZA = 4
+    ATRASA = 5
 
 class Color(tuple, Enum):
     WHITE = (255, 255, 255)
