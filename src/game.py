@@ -22,7 +22,7 @@ def viveCelula(cant_vecinos):
 	return cant_vecinos == 2 or cant_vecinos == 3
 
 def actualizarCeldas(grid):
-	old_grid = list(map(list, grid))
+	old_grid = list(map(list, grid)).copy()
 	for i in range(GRID_SIZE):
 		for j in range(GRID_SIZE):
 			cant_vecinos = contarVecinos(i, j, old_grid)
@@ -33,4 +33,4 @@ def actualizarCeldas(grid):
 			#elif viveCelula(cant_vecinos) and grid[i][j] == Celula.VIVA:
 			#	grid[i][j] = Celula.VIVA
 
-	return grid
+	return grid, old_grid

@@ -12,6 +12,7 @@ TICK_RATE = 5
 # Tamaños de celda y celula
 GRID_SIZE = 25
 CELL_SIZE = 20
+FONT_SIZE = 20
 
 class Celula(Enum):
     VIVA = 1
@@ -21,6 +22,8 @@ class Estado(Enum):
     CORRIENDO = 1
     PAUSA = 2
     SALIR = 0
+    AVANZA = 4
+    ATRASA = 5
 
 class Color(tuple, Enum):
     WHITE = (255, 255, 255)
