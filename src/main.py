@@ -16,24 +16,32 @@ if __name__ == "__main__" :
     renderer.draw_cells(grid)
 
     estado = Estado.PAUSA
+    ya_atraso = False
 
     while estado != Estado.SALIR:
         if estado == Estado.CORRIENDO:
             grid, old_grid = actualizarCeldas(grid)
-            renderer.draw_cells(grid)
-            estado = renderer.handle_events(estado)
-            renderer.tick(TICK_RATE)
+            renderer.next_generation(grid)
+            ya_atraso = False
 
         elif estado == Estado.PAUSA:
-            estado = renderer.handle_events(estado)
-            if estado == Estado.AVANZA:
+            pass
+
+        elif estado == Estado.AVANZA:
                 grid, old_grid = actualizarCeldas(grid)
+                renderer.next_generation(grid)
                 estado = Estado.PAUSA
-            elif estado == Estado.ATRASA:
-                old_grid, grid = actualizarCeldas(old_grid)
+                ya_atraso = False
+
+        elif estado == Estado.ATRASA:
+                if not ya_atraso:  
+                    renderer.prev_generation(old_grid)
+                    grid = old_grid
+                    ya_atraso = True
                 estado = Estado.PAUSA
-            renderer.draw_cells(grid)
-            renderer.tick(TICK_RATE)
+
+        estado = renderer.handle_events(estado)
+        renderer.tick(TICK_RATE)
 
         
 

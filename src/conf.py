@@ -12,6 +12,7 @@ TICK_RATE = 5
 # Tamaños de celda y celula
 GRID_SIZE = 25
 CELL_SIZE = 20
+FONT_SIZE = 20
 
 class Celula(Enum):
     VIVA = 1
